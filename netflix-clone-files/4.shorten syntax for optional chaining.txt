@@ -1,0 +1,2 @@
+        {/* if movi-title not present then movie-name or movie-original-name because api sometime doesnt gives you consistent data */}
+        <h1>{movie?.title || movie?.name || movie.original_name}</h1>

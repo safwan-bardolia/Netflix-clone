@@ -1,0 +1,22 @@
+<App>
+	<Nav>
+
+	<Nav/>
+
+	<Banner>			// entire banner has background img(like movie poster)
+		{/* title */}
+      	 	{/* div with 2 button */}
+	        {/* description */}
+		{/* fadding at bottom */}
+	<Banner/>
+
+
+	<Row>	// multiple Row component
+		
+		{row_title}
+
+		{container for all movie poster}	
+			it contain multiple <img/> (posters)
+	<Row/>
+
+<App/>

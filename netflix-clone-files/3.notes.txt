@@ -1,0 +1,6 @@
+if you display background img on component or container 
+& if you dont display any content inside that component or container 
+
+then it does not show any img
+
+.to check background img add some property inside that container

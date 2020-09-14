@@ -1,0 +1,79 @@
+.for trailer popup we add following two dependencies
+	
+	1.npm install react-youtube
+	2.npm install movie-trailer
+
+.steps
+
+**inside Row.js**
+
+  //add following code after "row_posters" component
+
+  const opts = {
+    height: "390",
+    width: "100%",
+    playerVars: {
+      autoplay: 1, // i want to autoplay when it loads in
+    },
+  };
+
+  // <Youtube/> takes videoId & options 
+  <YouTube videoId={trailerUrl} opts={opts} />
+
+.it will display vidoe based on videoId
+
+________________________________________________________________________________________________________________________________________________________________
+
+.but i want to display trailer only when user click on its poster
+.& hide when user click again
+
+.so first add state
+	const [trailerUrl, setTrailerUrl] = useState("");
+
+.add onClick for each posters
+
+      <div className="row_posters">
+        {movies.map((movie) => (
+          <img
+            onClick={()=>handleOnClick(movie)}						****
+            className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+            key={movie.id} 
+            src={`${base_url}${
+              isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
+            alt={movie.name}
+          />
+        ))}
+      </div>
+      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}			//if trailerUrl present then only display youtube component
+
+
+.add handleOnClick() function
+
+  const handleOnClick = (movie) => {
+    if(trailerUrl) {					// if video is already open then close it(i.e trailerUrl is present)
+      setTrailerUrl("");	    	
+    } else {						// movieTrailer():another dependency, if we pass the movie-name then it automatically look for its trailer & return reponse
+      movieTrailer(movie?.name || "")  											 // ( movie?.name || "")because sometime movie-name is not defined
+      .then(url => {
+        const urlParams = new URL(url).search;		// return url for e.g https://www.youtube.com/watch?v=xxjcxjkj  ,  we only want "v=xxjcxjkj" this part
+      }).catch(error => console.log(error))
+    }
+  }
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+// return url for e.g url= https://www.youtube.com/watch?v=xxjcxjkj  ,  we only want "xxjcxjkj" this part
+then(url=> {
+	const urlParams = new URL(url).search;				, it will give "v=xxjcxjkj"
+}
+
+now 
+
+const urlParams = new URLSearchParam(new URL(url).search);
+urlparams.get('v')							. it gives us "xxjcxjkj" which we want
+
+
+________________________________________________________________________________________________________________________________________________________________________________________________
+
+import movieTrailer from "movie-trailer";

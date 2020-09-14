@@ -1,0 +1,8 @@
+.get TMDB API key
+.create-react-app
+.setup firebase for hosting
+.get all the movies
+.build the rows
+.build the Banner
+.build the Nav bar
+.Add trailer popups

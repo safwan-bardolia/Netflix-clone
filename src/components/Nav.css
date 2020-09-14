@@ -1,0 +1,51 @@
+/* see video because there is some clash in positioning */
+
+.nav {
+  /* always at the top */
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  justify-content: space-between; /*here it not worked, because it is clashed with position:fixed*/
+  /* so add width of 100%  */
+  width: 100%;
+
+  padding: 20px;
+
+  /* we don't want to show background-color of nav initially, we will show only when user scroll to y-axis 
+    so add scroll listener in 'Nav.js'
+  */
+  /* background-color: #111; */
+  height: 22px;
+
+  z-index: 1;
+
+  /* Animation */
+  transition-timing-function: ease-in;
+  transition: all 0.5s; /*apply to all the transition wheter the width changes or opacity or background-color*/
+}
+
+/* this class is present only when we scroll 100 down to y axis */
+.nav_black {
+  background-color: #111;
+}
+
+.nav_logo {
+  /* change the size & keep the aspect ratio */
+  width: 80px;
+  object-fit: contain;
+
+  /* to remove final problem */
+  position: fixed;
+  left: 20px;
+}
+
+.nav_avatar {
+  /* change the size & keep the aspect ratio */
+  width: 30px;
+  object-fit: contain;
+
+  /* to remove final problem */
+  position: fixed;
+  right: 20px;
+}

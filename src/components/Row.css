@@ -1,0 +1,53 @@
+/* margin: push outside
+   padding: push inside
+*/
+
+.row {
+  color: white;
+  margin-left: 20px;
+}
+
+/* img container */
+.row_posters {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden; /*not need here(it says that if the container goes bigger then not display scroll on y)*/
+  padding: 20px;
+}
+
+/*************************************************************************************************************/
+
+/* Hide scrollbar for Chrome, Safari & Opera */
+.row_posters::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge & Firefox */
+.row_posters {
+  -ms-overflow-style: none; /*IE & enge*/
+  scrollbar-width: none; /*firefox*/
+}
+
+/*************************************************************************************************************/
+
+/* indivisual img inside container */
+.row_poster {
+  width: 100%;
+  max-height: 100px;
+  object-fit: contain; /* keep the aspect ratio */
+  margin-right: 10px;
+  transition: transform 450ms ease-in-out;
+}
+
+.row_poster:hover {
+  transform: scale(1.08);
+}
+
+/* override img height for class "row_posterLarge" (i.e in case of netflix original)*/
+.row_posterLarge {
+  max-height: 250px;
+}
+
+.row_posterLarge:hover {
+  transform: scale(1.1);
+}
